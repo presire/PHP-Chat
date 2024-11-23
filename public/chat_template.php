@@ -10,14 +10,14 @@
                         <label for="body">本文: </label>
                         <input type="text" id="body" name="body" required />
                     </div>
-                    <input type="hidden" name="write"/>
+                    <input type="hidden" name="write" value="write" />
                     <button type="submit">書き込み</button>
                 </div>
             </form>
             <!-- ログ削除フォーム -->
             <form class="delete-form" action="chat_proccess.php" method="POST" style="display: inline-block;">
-                <input type="hidden" name="delete"/>
-                <input type="hidden" name="display_count" value=$display_count/>
+                <input type="hidden" name="delete" value="delete" />
+                <input type="hidden" name="display_count" value="$display_count"/>
                 <button type="submit" onclick="return confirm('本当にログを削除してもよろしいですか？')" class="delete-button">ログを削除</button>
             </form>
         </div>
