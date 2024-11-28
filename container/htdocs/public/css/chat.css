@@ -1,0 +1,145 @@
+body {
+  background-color: #f0f0ff;
+}
+
+H3 {
+  font-size:        24px;
+  color:            yellow;
+  background-color: blue;
+  padding:          5px;
+}
+
+.log {
+  font-size:     14px;
+  border-bottom: 1px solid #9999ff;
+  line-height:   18px;
+}
+
+/* フォーム */
+#chatform {
+    display:        flex;
+    flex-direction: column;
+    gap:            10px;
+}
+
+.form-container {
+    display:         flex;
+    justify-content: space-between;
+    align-items:     flex-start;
+    margin-bottom:   20px;
+    width:           100%;
+}
+
+.form-container form {
+    max-width:          none;
+    margin:             0;
+    padding:            20;
+    background-color:   transparent;
+    box-shadow:         none;
+}
+
+.write-form {
+    flex-grow:    1;
+    padding:      20px;
+    margin-right: 20px;
+}
+
+.delete-form {
+    flex-shrink: 0;
+    padding-top: 8px; /* 書き込みフォームの最初の入力欄に合わせて調整 */
+}
+
+.input-group {
+    display:     flex;
+    align-items: center;
+}
+
+.input-group label {
+    width:        80px; /* ラベルの幅を固定 */
+    margin-right: 10px;
+}
+
+.input-group input {
+    flex-grow: 1;
+    padding:   5px;
+}
+
+/* プルダウン */
+.custom-select {
+    /* 基本スタイル */
+    width:            250px;
+    padding:          8px 12px;
+    font-size:        16px;
+    font-family:      Arial, sans-serif;
+    color:            #333;
+    border-color:     #6c5ce7;
+    background-color: #f8f9fa;
+    border:           2px solid #ddd;
+    border-radius:    6px;
+    cursor:           pointer;
+
+    /* スムーズな変化のアニメーション */
+    transition: all 0.3s ease;
+
+    /* デフォルトの矢印を非表示 */
+    -webkit-appearance: none;
+    -moz-appearance:    none;
+    appearance:         none;
+
+    /* 矢印の位置調整 */
+    position:           relative;
+}
+
+/* ホバー時のエフェクト */
+.custom-select:hover {
+    border-color: #999;
+    box-shadow:   0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* フォーカス時のエフェクト */
+.custom-select:focus {
+    outline:      none;
+    border-color: #4a90e2;
+    box-shadow:   0 2px 8px rgba(74,144,226,0.2);
+}
+
+/* オプション（選択肢）のスタイル */
+.custom-select option {
+    padding:          12px;
+    background-color: #fff;
+    color:            #333;
+}
+
+/* オプションにホバーした時 */
+.custom-select option:hover {
+    background-color: #f5f5f5;
+}
+
+/* 選択されているオプション */
+.custom-select option:checked {
+    background-color: #4a90e2;
+    color:            #fff;
+}
+
+/* 書き込みボタン */
+#chatform button[type="submit"] {
+    align-self: flex-start;  /* 左寄せに配置 */
+    width:      auto;        /* 内容に合わせて幅を自動調整 */
+    min-width:  100px;       /* 最小幅を設定 */
+    padding:    8px 16px;    /* 左右の余白を追加 */
+}
+
+/* 削除ボタン */
+.delete-button {
+    background-color: #dc3545;
+    color:            white;
+    padding:          8px 12px;
+    border:           none;
+    border-radius:    4px;
+    cursor:           pointer;
+    transition:       background-color 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+}

@@ -73,3 +73,56 @@ MySQL 8 - loginテーブル
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci; 
 <br>
 <br>
+
+# コンテナの使用
+もし、Podman ComposeあるいはDocker Composeを使用して構築する場合は、以下の手順を実行してください。  
+
+まず、mysql_dataディレクトリにパーミッションを付与します。  
+
+    cd container  
+    chmod a+rwx mysql_data  
+<br>
+
+以下のコマンドを実行して、PHP-FPM、NginX、MySQLコンテナを作成してください。  
+
+    # Podmanの場合
+    podman-compose up -d  
+
+    # Dockerの場合
+    docker-compose up -d  
+<br>
+
+また、コンテナを使用する場合は、データベースやテーブルは手動で作成する必要があるかもしれません。  
+
+    # chatdbデータベースの作成  
+    CREATE DATABASE IF NOT EXISTS chatdb  
+    CHARACTER SET utf8mb4  
+    COLLATE utf8mb4_unicode_ci;  
+
+    use chatdb;
+
+    # chatlogテーブルの作成  
+
+    CREATE TABLE IF NOT EXISTS chatlog (  
+        log_id INT AUTO_INCREMENT PRIMARY KEY,  
+        name   VARCHAR(255),  
+        body   TEXT,  
+        ctime  DATETIME,  
+        INDEX  idx_chatlog_ctime (ctime)  
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;  
+
+    # loginテーブル の作成
+    CREATE TABLE IF NOT EXISTS login (  
+        login_id varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,  
+        password varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,  
+        remember_token varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,  
+        token_expires_at timestamp NULL DEFAULT NULL, 
+        last_login_at timestamp NULL DEFAULT NULL,  
+        PRIMARY KEY (login_id),  
+        KEY idx_login_id (login_id),  
+        KEY idx_remember_token (remember_token),  
+        KEY idx_token_expires (token_expires_at)  
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;  
+<br>
+
+最後に、http://localhost:8000/public/login.php にアクセスして、ページが正常に表示されるかどうかを確認してください。  
